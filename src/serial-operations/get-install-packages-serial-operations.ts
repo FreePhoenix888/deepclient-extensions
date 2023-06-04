@@ -29,7 +29,6 @@ export async function getInstallPackagesSerialoperations(
     const { name, installLinkId, containerLinkId, containData } = packageData;
 
     const insertData: MutationInputLink = {
-      id: installLinkId,
       type_id: installTypeLinkId,
       from_id: containerLinkId,
       to: {
@@ -40,6 +39,10 @@ export async function getInstallPackagesSerialoperations(
       },
     };
 
+    if(installLinkId) {
+      insertData.id = installLinkId;
+    }
+    
     if (containData) {
       const { linkId, value } = packageData.containData ?? {};
       const containInsertData: MutationInputLink = {
@@ -70,8 +73,8 @@ export async function getInstallPackagesSerialoperations(
 export interface GetInstallPackagesSerialOperationsParam {
   packagesData: Array<{
     name: string;
-    installLinkId: number;
-    containerLinkId?: number;
+    installLinkId?: number | undefined;
+    containerLinkId?: number | undefined;
     containData?:
       | {
           linkId?: number | undefined;
