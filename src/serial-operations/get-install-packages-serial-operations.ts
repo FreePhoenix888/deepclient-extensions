@@ -7,18 +7,18 @@ import { MutationInputLink } from '@deep-foundation/deeplinks/imports/client_typ
 import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
 
 export async function getInstallPackagesSerialoperations(
-  this: DeepClient,
+  deep: DeepClient,
   param: GetInstallPackagesSerialOperationsParam
 ): Promise<Array<SerialOperation>> {
   const {
     packagesData,
     typeLinkIds: {
-      containTypeLinkId = await this.id('@deep-foundation/core', 'Contain'),
-      installTypeLinkId = await this.id(
+      containTypeLinkId = await deep.id('@deep-foundation/core', 'Contain'),
+      installTypeLinkId = await deep.id(
         '@deep-foundation/npm-packager',
         'Install'
       ),
-      packageQueryTypeLinkId = await this.id(
+      packageQueryTypeLinkId = await deep.id(
         '@deep-foundation/core',
         'PackageQuery'
       ),
@@ -42,7 +42,7 @@ export async function getInstallPackagesSerialoperations(
     if(installLinkId) {
       insertData.id = installLinkId;
     }
-    
+
     if (containData) {
       const { linkId, value } = packageData.containData ?? {};
       const containInsertData: MutationInputLink = {
