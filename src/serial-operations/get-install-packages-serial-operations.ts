@@ -8,7 +8,7 @@ import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
 
 export async function getInstallPackagesSerialoperations(
   param: GetInstallPackagesSerialOperationsParam
-): Promise<Array<SerialOperation>> {
+): Promise<InstallPackagesSerialOperationsPerPackageName> {
   const {
     deep,
     packagesData,
@@ -25,53 +25,69 @@ export async function getInstallPackagesSerialoperations(
     },
   } = param;
 
-  const serialOperations = packagesData.map((packageData) => {
-    const { name, installLinkId, containerLinkId, containData } = packageData;
+  const serialOperationsPerPackageName = packagesData.reduce<InstallPackagesSerialOperationsPerPackageName>(
+    (serialOperationsPerPackageName, packageData) => {
+      const { name, installLinkId, containerLinkId, containData } = packageData;
+      const serialOperations: Array<SerialOperation> = [];
 
-    const insertData: MutationInputLink = {
-      type_id: installTypeLinkId,
-      from_id: containerLinkId,
-      to: {
-        data: {
-          type_id: packageQueryTypeLinkId,
-          string: { data: { value: name } },
-        },
-      },
-    };
-
-    if(installLinkId) {
-      insertData.id = installLinkId;
-    }
-
-    if (containData) {
-      const { linkId, value } = packageData.containData ?? {};
-      const containInsertData: MutationInputLink = {
-        type_id: containTypeLinkId,
+      const insertData: MutationInputLink = {
+        type_id: installTypeLinkId,
         from_id: containerLinkId,
+        to: {
+          data: {
+            type_id: packageQueryTypeLinkId,
+            string: { data: { value: name } },
+          },
+        },
       };
-      if (linkId !== null) {
-        containInsertData.id = linkId;
+
+      if (installLinkId) {
+        insertData.id = installLinkId;
       }
-      if (value !== null) {
-        containInsertData.string = {
-          data: { value: value ?? `Install${name}` },
+
+      if (containData) {
+        const { linkId, value } = packageData.containData ?? {};
+        const containInsertData: MutationInputLink = {
+          type_id: containTypeLinkId,
+          from_id: containerLinkId,
         };
+        if (linkId !== null) {
+          containInsertData.id = linkId;
+        }
+        if (value !== null) {
+          containInsertData.string = {
+            data: { value: value ?? `Install${name}` },
+          };
+        }
+
+        serialOperations.push(
+          createSerialOperation({
+            table: 'links',
+            type: 'insert',
+            objects: containInsertData,
+          })
+        );
       }
-      insertData.in!.data = containInsertData;
-    }
 
-    return createSerialOperation({
-      table: 'links',
-      type: 'insert',
-      objects: insertData,
-    });
-  });
+      serialOperations.push(
+        createSerialOperation({
+          table: 'links',
+          type: 'insert',
+          objects: insertData,
+        })
+      );
 
-  return serialOperations;
+      serialOperationsPerPackageName[name] = serialOperations;
+
+      return serialOperationsPerPackageName;
+    }, {}
+  );
+
+  return serialOperationsPerPackageName;
 }
 
 export interface GetInstallPackagesSerialOperationsParam {
-  deep: DeepClient,
+  deep: DeepClient;
   packagesData: Array<{
     name: string;
     installLinkId?: number | undefined;
@@ -89,3 +105,6 @@ export interface GetInstallPackagesSerialOperationsParam {
     packageQueryTypeLinkId?: number | undefined;
   };
 }
+
+export type PackageName = string;
+export type InstallPackagesSerialOperationsPerPackageName = Record<PackageName, Array<SerialOperation>>
