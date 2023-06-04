@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/@deep-foundation/react-use-are-packages-installed.svg)](https://www.npmjs.com/package/@deep-foundation/react-use-are-packages-installed)
+[![npm](https://img.shields.io/npm/v/@freephoenix888/deepclient-extensions.svg)](https://www.npmjs.com/package/@freephoenix888/deepclient-extensions)
 
 # Goal
 
