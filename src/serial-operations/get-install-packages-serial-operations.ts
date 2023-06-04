@@ -81,9 +81,6 @@ export interface GetInstallPackagesSerialOperationsParam {
   }>;
   typeLinkIds: {
     containTypeLinkId?: number | undefined;
-    handlerTypeLinkId?: number | undefined;
-    portTypeLinkId?: number | undefined;
-    syncTextFileTypeLinkId?: number | undefined;
     installTypeLinkId?: number | undefined;
     packageQueryTypeLinkId?: number | undefined;
   };
