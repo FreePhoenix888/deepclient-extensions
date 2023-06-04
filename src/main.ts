@@ -1,9 +1,9 @@
-export { insertHandler, InsertHandlerParam } from './insert-handler';
+export { insertHandler, type InsertHandlerParam } from './insert-handler';
 export {
   insertRouteHandler,
-  InsertRouteHandlerParam,
+  type InsertRouteHandlerParam,
 } from './insert-route-handler';
 export {
   insertClientHandler,
-  InsertClientHandlerParam,
+  type InsertClientHandlerParam,
 } from './insert-client-handler';
