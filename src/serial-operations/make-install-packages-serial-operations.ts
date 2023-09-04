@@ -1,13 +1,15 @@
 import {
   DeepClient,
+  DeepClientInstance,
   SerialOperation,
   SerialOperationType,
 } from '@deep-foundation/deeplinks/imports/client';
 import { MutationInputLink } from '@deep-foundation/deeplinks/imports/client_types';
 import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
 
-export async function getInstallPackagesSerialoperations(
-  param: GetInstallPackagesSerialOperationsParam
+export async function makeInstallPackagesSerialoperations<TDeepClient extends DeepClientInstance>(
+  this: TDeepClient,
+  options: MakeInstallPackagesSerialOperationsOptions
 ): Promise<InstallPackagesSerialOperationsPerPackageName> {
   const {
     deep,
@@ -23,7 +25,7 @@ export async function getInstallPackagesSerialoperations(
         'PackageQuery'
       ),
     },
-  } = param;
+  } = options;
 
   const serialOperationsPerPackageName = packagesData.reduce<InstallPackagesSerialOperationsPerPackageName>(
     (serialOperationsPerPackageName, packageData) => {
@@ -86,7 +88,7 @@ export async function getInstallPackagesSerialoperations(
   return serialOperationsPerPackageName;
 }
 
-export interface GetInstallPackagesSerialOperationsParam {
+export interface MakeInstallPackagesSerialOperationsOptions {
   deep: DeepClient;
   packagesData: Array<{
     name: string;
