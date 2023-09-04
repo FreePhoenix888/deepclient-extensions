@@ -48,7 +48,7 @@ beforeAll(async () => {
 });
 
 describe("SerialTransitionsdecoratedDeep", () => {
-  it("should append insert transition", async () => {
+  it("should append insert transition", () => {
     const table = "links";
     const transition = [
       null,
