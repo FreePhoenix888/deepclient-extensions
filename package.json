@@ -14,7 +14,9 @@
     "library:build:dirty": "ts-node --esm ./automation/library/build.ts",
     "library:build:generate-package-class": "generate-package-class",
     "documentation:generate": "ts-node --esm ./automation/documentation/generate.ts",
-    "library:documentation:generate": "typedoc ./src/main.ts"
+    "library:documentation:generate": "typedoc ./src/main.ts",
+    "prettier:check": "prettier . --check",
+    "prettier:write": "prettier . --write"
   },
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
