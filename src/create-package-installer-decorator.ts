@@ -12,6 +12,6 @@ export function createPackageInstallerDecorator<TDeepClient extends DeepClientIn
   return decorator;
 }
 
-export type PackageInstallerDecorator<TDeepClient extends DeepClientInstance = DeepClientInstance> = TDeepClient & {
+export type PackageInstallerDecorator<TDeepClient extends DeepClientInstance> = TDeepClient & {
   makeInstallPackagesOperations: typeof makeInstallPackagesOperations
 }
