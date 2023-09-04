@@ -1,28 +1,19 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "removeComments": true,
-    "jsx": "react",
+    "target": "ESNext",
+    "jsx": "react-jsx",
     "module": "ESNext",
-    "moduleResolution": "node",
-    "target": "es2015",
-    "skipLibCheck": true,
-    "lib": [
-      "dom",
-      "es6",
-      "es7",
-      "ES2020"
-    ],
+    "rootDir": "./src",
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
     "strictNullChecks": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["tests/**/*.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
