@@ -11,4 +11,12 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   root: true,
+  overrides: [
+    {
+      files: ["automation/**/*.ts"], 
+      parserOptions: {
+        project: "./tsconfig.automation.json"
+      }
+    }
+  ]
 };

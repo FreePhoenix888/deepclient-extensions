@@ -1,0 +1,6 @@
+{
+  "include": [
+    "automation/**/*.ts"
+  ],
+  "extends": "./tsconfig.json",
+}
