@@ -1,8 +1,7 @@
 import {
   DeepClient,
   DeepClientInstance,
-  SerialOperation,
-  SerialOperationType,
+  SerialOperation
 } from '@deep-foundation/deeplinks/imports/client';
 import { MutationInputLink } from '@deep-foundation/deeplinks/imports/client_types';
 import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
