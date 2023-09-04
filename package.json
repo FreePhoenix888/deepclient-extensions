@@ -17,7 +17,8 @@
     "library:documentation:generate": "typedoc ./src/main.ts",
     "prettier:check": "prettier . --check",
     "prettier:write": "prettier . --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:fix": "eslint . --fix"
   },
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -45,6 +46,10 @@
     "@deep-foundation/deeplinks": "~0.0.294"
   },
   "lint-staged": {
-    "**/*": "npm run prettier:write"
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint:fix",
+      "npm run prettier:write"
+    ],
+    "*.{json,md}": "npm run prettier:write"
   }
 }
