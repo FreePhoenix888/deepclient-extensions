@@ -47,6 +47,7 @@ export function append<TDeepClient extends DeepClientInstance>(
           transitionType,
           table: table as Table<"delete">,
         };
+        break;
       default:
         throw new Error(
           "Invalid transition type. If you want to insert link - the first element must be null and the second must be link. If you want to update link - the first and second elements must be links. If you want to delete link - the first element must be link and second must be null",

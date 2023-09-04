@@ -1,6 +1,6 @@
 import { DeepClientInstance } from "@deep-foundation/deeplinks/imports/client";
 import { MakeInstallPackagesOperationsOptions } from "./main";
-import { PackageInstallerDecorator } from "./create-package-installer-decorator";
+import { PackageInstallerDecorator } from "./package-installer-decorator.ts/create-package-installer-decorator";
 
 export async function installPackages<TDeepClient extends DeepClientInstance>(
   this: PackageInstallerDecorator<TDeepClient>,

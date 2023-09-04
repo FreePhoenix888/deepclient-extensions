@@ -1,6 +1,6 @@
 import { DeepClientInstance } from "@deep-foundation/deeplinks/imports/client";
-import { makeInstallPackagesOperations } from "./main";
-import { debug } from "./debug";
+import { makeInstallPackagesOperations } from "../main";
+import { debug } from "../debug";
 
 export function createPackageInstallerDecorator<
   TDeepClient extends DeepClientInstance,

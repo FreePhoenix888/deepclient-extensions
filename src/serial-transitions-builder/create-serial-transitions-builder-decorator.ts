@@ -1,13 +1,5 @@
-import {
-  DeepClientInstance,
-  Table,
-} from "@deep-foundation/deeplinks/imports/client.js";
+import { DeepClientInstance } from "@deep-foundation/deeplinks/imports/client.js";
 import { debug } from "../debug.js";
-import {
-  IGenerateMutationBuilder,
-  ISerialOptions,
-} from "@deep-foundation/deeplinks/imports/gql/index.js";
-import { MutationInputLink } from "@deep-foundation/deeplinks/imports/client_types.js";
 import { append } from "./append.js";
 import { SerialAction } from "./serial-action.js";
 import { getTransitionType } from "./get-transition-type.js";

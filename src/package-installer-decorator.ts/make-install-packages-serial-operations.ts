@@ -5,7 +5,7 @@ import {
 } from "@deep-foundation/deeplinks/imports/client";
 import { MutationInputLink } from "@deep-foundation/deeplinks/imports/client_types";
 import { createSerialOperation } from "@deep-foundation/deeplinks/imports/gql";
-import { PackageInstallerDecorator } from "../create-package-installer-decorator";
+import { PackageInstallerDecorator } from "./create-package-installer-decorator";
 
 export async function makeInstallPackagesOperations<
   TDeepClient extends DeepClientInstance,
