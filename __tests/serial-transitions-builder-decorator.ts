@@ -5,7 +5,6 @@ import assert from "assert";
 import { DeepClient } from "@deep-foundation/deeplinks/imports/client.js";
 import {
   createSerialTransitionsBuilderDecorator,
-  CreateTransitionBuilderDecoratorOptions,
   SerialTransitionsBuilderDecorator,
 } from "../src/serial-transitions-builder/create-serial-transitions-builder-decorator.js";
 import { Transition } from "../src/serial-transitions-builder/transition.js";
