@@ -19,5 +19,11 @@ module.exports = {
         project: "./tsconfig.automation.json",
       },
     },
+    {
+      files: ["__tests/**/*.ts"],
+      parserOptions: {
+        project: "./tsconfig.tests.json",
+      },
+    }
   ],
 };
