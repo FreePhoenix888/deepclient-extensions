@@ -7,4 +7,4 @@ async function main() {
     generateCliAppsHelpInReadmeOptions: null,
     generateUsageWaysOfNpmCliAppsInMarkdownFormatOptions: null,
   })
-};
+}
