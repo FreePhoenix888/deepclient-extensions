@@ -1,6 +1,6 @@
 import { generateDocumentation } from "@deep-foundation/npm-automation";
 
-main().catch(console.error);
+main();
 
 async function main() {
   await generateDocumentation({

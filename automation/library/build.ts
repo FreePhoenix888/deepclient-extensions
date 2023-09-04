@@ -1,6 +1,6 @@
 import { buildTypescriptLibrary } from "@deep-foundation/npm-automation";
 
-main().catch(console.error);
+main();
 
 async function main() {
   await buildTypescriptLibrary({});
