@@ -1,9 +1,9 @@
-import { DeepClient } from '@deep-foundation/deeplinks/imports/client';
-import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
+import { DeepClient } from "@deep-foundation/deeplinks/imports/client";
+import { createSerialOperation } from "@deep-foundation/deeplinks/imports/gql";
 
 export async function insertHandler(
   this: DeepClient,
-  param: InsertHandlerParam
+  param: InsertHandlerParam,
 ) {
   const {
     ownerLinkId = this.linkId,
@@ -15,11 +15,11 @@ export async function insertHandler(
     handlerName,
     handleTypeLinkId,
     typeLinkIds: {
-      containTypeLinkId = await this.id('@deep-foundation/core', 'Contain'),
-      handlerTypeLinkId = await this.id('@deep-foundation/core', 'Handler'),
+      containTypeLinkId = await this.id("@deep-foundation/core", "Contain"),
+      handlerTypeLinkId = await this.id("@deep-foundation/core", "Handler"),
       syncTextFileTypeLinkId = await this.id(
-        '@deep-foundation/core',
-        'SyncTextFile'
+        "@deep-foundation/core",
+        "SyncTextFile",
       ),
     },
   } = param;
@@ -39,8 +39,8 @@ export async function insertHandler(
   await this.serial({
     operations: [
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           id: syncTextFileLinkId,
           type_id: syncTextFileTypeLinkId,
@@ -56,16 +56,16 @@ export async function insertHandler(
         },
       }),
       createSerialOperation({
-        table: 'strings',
-        type: 'insert',
+        table: "strings",
+        type: "insert",
         objects: {
           link_id: syncTextFileLinkId,
           value: code,
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           id: handlerLinkId,
           type_id: handlerTypeLinkId,
@@ -83,8 +83,8 @@ export async function insertHandler(
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           type_id: handleTypeLinkId,
           from_id: triggerTypeLinkId,

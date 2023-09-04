@@ -1,9 +1,9 @@
-import { DeepClient } from '@deep-foundation/deeplinks/imports/client';
-import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
+import { DeepClient } from "@deep-foundation/deeplinks/imports/client";
+import { createSerialOperation } from "@deep-foundation/deeplinks/imports/gql";
 
 export async function insertRouteHandler(
   this: DeepClient,
-  param: InsertRouteHandlerParam
+  param: InsertRouteHandlerParam,
 ) {
   const {
     code,
@@ -11,23 +11,23 @@ export async function insertRouteHandler(
     route,
     typeLinkIds: {
       supportsJsLinkId,
-      containTypeLinkId = await this.id('@deep-foundation/core', 'Contain'),
-      handleRouteLinkId = await this.id('@deep-foundation/core', 'HandleRoute'),
-      handlerTypeLinkId = await this.id('@deep-foundation/core', 'Handler'),
-      portTypeLinkId = await this.id('@deep-foundation/core', 'Port'),
-      routeTypeLinkId = await this.id('@deep-foundation/core', 'Route'),
+      containTypeLinkId = await this.id("@deep-foundation/core", "Contain"),
+      handleRouteLinkId = await this.id("@deep-foundation/core", "HandleRoute"),
+      handlerTypeLinkId = await this.id("@deep-foundation/core", "Handler"),
+      portTypeLinkId = await this.id("@deep-foundation/core", "Port"),
+      routeTypeLinkId = await this.id("@deep-foundation/core", "Route"),
       routerListeningLinkId = await this.id(
-        '@deep-foundation/core',
-        'RouterListening'
+        "@deep-foundation/core",
+        "RouterListening",
       ),
       routerStringUseTypeLinkId = await this.id(
-        '@deep-foundation/core',
-        'RouterStringUse'
+        "@deep-foundation/core",
+        "RouterStringUse",
       ),
-      routerTypeLinkId = await this.id('@deep-foundation/core', 'Router'),
+      routerTypeLinkId = await this.id("@deep-foundation/core", "Router"),
       syncTextFileTypeLinkId = await this.id(
-        '@deep-foundation/core',
-        'SyncTextFile'
+        "@deep-foundation/core",
+        "SyncTextFile",
       ),
     },
     ownerLinkId = this.linkId,
@@ -52,8 +52,8 @@ export async function insertRouteHandler(
   await this.serial({
     operations: [
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           id: syncTextFileLinkId,
           type_id: syncTextFileTypeLinkId,
@@ -66,16 +66,16 @@ export async function insertRouteHandler(
         },
       }),
       createSerialOperation({
-        table: 'strings',
-        type: 'insert',
+        table: "strings",
+        type: "insert",
         objects: {
           link_id: syncTextFileLinkId,
           value: code,
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           id: handlerLinkId,
           type_id: handlerTypeLinkId,
@@ -90,8 +90,8 @@ export async function insertRouteHandler(
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           id: routeLinkId,
           type_id: routeTypeLinkId,
@@ -104,8 +104,8 @@ export async function insertRouteHandler(
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           type_id: handleRouteLinkId,
           from_id: routeLinkId,
@@ -119,8 +119,8 @@ export async function insertRouteHandler(
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           id: routerLinkId,
           type_id: routerTypeLinkId,
@@ -133,8 +133,8 @@ export async function insertRouteHandler(
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           id: routerStringUseLinkId,
           type_id: routerStringUseTypeLinkId,
@@ -149,16 +149,16 @@ export async function insertRouteHandler(
         },
       }),
       createSerialOperation({
-        table: 'strings',
-        type: 'insert',
+        table: "strings",
+        type: "insert",
         objects: {
           link_id: routerStringUseLinkId,
           value: route,
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           id: portLinkId,
           type_id: portTypeLinkId,
@@ -171,16 +171,16 @@ export async function insertRouteHandler(
         },
       }),
       createSerialOperation({
-        table: 'numbers',
-        type: 'insert',
+        table: "numbers",
+        type: "insert",
         objects: {
           link_id: portLinkId,
           value: port,
         },
       }),
       createSerialOperation({
-        table: 'links',
-        type: 'insert',
+        table: "links",
+        type: "insert",
         objects: {
           type_id: routerListeningLinkId,
           from_id: routerLinkId,

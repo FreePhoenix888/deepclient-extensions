@@ -1,22 +1,22 @@
 /* eslint-env node */
 module.exports = {
   extends: [
-    'eslint:recommended', 
-    'plugin:@typescript-eslint/recommended-type-checked'
-],
-  parser: '@typescript-eslint/parser',
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+  ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     project: true,
     tsconfigRootDir: __dirname,
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ["@typescript-eslint"],
   root: true,
   overrides: [
     {
-      files: ["automation/**/*.ts"], 
+      files: ["automation/**/*.ts"],
       parserOptions: {
-        project: "./tsconfig.automation.json"
-      }
-    }
-  ]
+        project: "./tsconfig.automation.json",
+      },
+    },
+  ],
 };

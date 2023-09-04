@@ -1,6 +1,4 @@
 {
-  "include": [
-    "automation/**/*.ts"
-  ],
-  "extends": "./tsconfig.json",
+  "include": ["automation/**/*.ts"],
+  "extends": "./tsconfig.json"
 }

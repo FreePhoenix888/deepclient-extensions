@@ -1,4 +1,4 @@
-import {generateDocumentation} from '@deep-foundation/npm-automation'
+import { generateDocumentation } from "@deep-foundation/npm-automation";
 
 main().catch(console.error);
 
