@@ -6,11 +6,12 @@ import {
 } from '@deep-foundation/deeplinks/imports/client';
 import { MutationInputLink } from '@deep-foundation/deeplinks/imports/client_types';
 import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
+import { PackageInstallerDecorator } from '../create-package-installer-decorator';
 
-export async function makeInstallPackagesSerialoperations<TDeepClient extends DeepClientInstance>(
-  this: TDeepClient,
-  options: MakeInstallPackagesSerialOperationsOptions
-): Promise<InstallPackagesSerialOperationsPerPackageName> {
+export async function makeInstallPackagesOperations<TDeepClient extends DeepClientInstance>(
+  this: PackageInstallerDecorator<TDeepClient>,
+  options: MakeInstallPackagesOperationsOptions
+): Promise<InstallPackagesOperationsPerPackageName> {
   const {
     deep,
     packagesData,
@@ -27,7 +28,7 @@ export async function makeInstallPackagesSerialoperations<TDeepClient extends De
     },
   } = options;
 
-  const serialOperationsPerPackageName = packagesData.reduce<InstallPackagesSerialOperationsPerPackageName>(
+  const serialOperationsPerPackageName = packagesData.reduce<InstallPackagesOperationsPerPackageName>(
     (serialOperationsPerPackageName, packageData) => {
       const { name, installLinkId, containerLinkId, containData } = packageData;
       const serialOperations: Array<SerialOperation> = [];
@@ -88,7 +89,7 @@ export async function makeInstallPackagesSerialoperations<TDeepClient extends De
   return serialOperationsPerPackageName;
 }
 
-export interface MakeInstallPackagesSerialOperationsOptions {
+export interface MakeInstallPackagesOperationsOptions {
   deep: DeepClient;
   packagesData: Array<{
     name: string;
@@ -109,4 +110,4 @@ export interface MakeInstallPackagesSerialOperationsOptions {
 }
 
 export type PackageName = string;
-export type InstallPackagesSerialOperationsPerPackageName = Record<PackageName, Array<SerialOperation>>
+export type InstallPackagesOperationsPerPackageName = Record<PackageName, Array<SerialOperation>>

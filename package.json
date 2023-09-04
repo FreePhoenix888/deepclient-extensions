@@ -22,10 +22,12 @@
     "/dist"
   ],
   "dependencies": {
+    "debug": "^4.3.4",
     "delay": "^5.0.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.8",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {

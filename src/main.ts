@@ -1,4 +1,4 @@
-export {makeInstallPackagesSerialoperations, type MakeInstallPackagesSerialOperationsOptions,type InstallPackagesSerialOperationsPerPackageName, type PackageName} from './serial-operations/make-install-packages-serial-operations.js'
+export {makeInstallPackagesOperations , type MakeInstallPackagesOperationsOptions ,type InstallPackagesOperationsPerPackageName , type PackageName} from './serial-operations/make-install-packages-serial-operations.js'
 export { insertHandler, type InsertHandlerParam } from './insert-handler';
 export {
   insertRouteHandler,
