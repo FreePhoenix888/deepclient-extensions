@@ -18,7 +18,8 @@
     "prettier:check": "prettier . --check",
     "prettier:write": "prettier . --write",
     "prepare": "husky install",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "commit": "cz"
   },
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -34,6 +35,8 @@
     "@types/debug": "^4.1.8",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
@@ -49,5 +52,15 @@
       "npm run prettier:write"
     ],
     "*.{json,md}": "npm run prettier:write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
   }
 }
