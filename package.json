@@ -16,7 +16,8 @@
     "documentation:generate": "ts-node --esm ./automation/documentation/generate.ts",
     "library:documentation:generate": "typedoc ./src/main.ts",
     "prettier:check": "prettier . --check",
-    "prettier:write": "prettier . --write"
+    "prettier:write": "prettier . --write",
+    "prepare": "husky install"
   },
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -35,10 +36,15 @@
     "@typescript-eslint/parser": "^6.5.0",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prettier": "3.0.3",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "@deep-foundation/deeplinks": "~0.0.294"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
