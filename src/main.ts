@@ -1,9 +1,11 @@
+// export {} from './package-installer-decorator'
 export {
   makeInstallPackagesOperations,
   type MakeInstallPackagesOperationsOptions,
   type InstallPackagesOperationsPerPackageName,
   type PackageName,
-} from "./package-installer-decorator.ts/make-install-packages-serial-operations.js";
+} from "./package-installer-decorator/make-install-packages-serial-operations.js";
+
 export { insertHandler, type InsertHandlerParam } from "./insert-handler";
 export {
   insertRouteHandler,
