@@ -1,5 +1,5 @@
 import { generateApolloClient } from "@deep-foundation/hasura/client.js";
-import { ApolloClient } from "@apollo/client/index.js";
+import { ApolloClient, InMemoryCache } from "@apollo/client/index.js";
 import "@testing-library/jest-dom";
 import assert from "assert";
 import { DeepClient } from "@deep-foundation/deeplinks/imports/client.js";
@@ -20,7 +20,7 @@ if (process.env.DEEPLINKS_HASURA_SECRET == null) {
 const secret = process.env.DEEPLINKS_HASURA_SECRET;
 const ws = true;
 
-let apolloClient: ApolloClient<any>;
+let apolloClient: ApolloClient<InMemoryCache>;
 let deep: DeepClient;
 let decoratedDeep: SerialTransitionsBuilderDecorator<DeepClient>;
 
