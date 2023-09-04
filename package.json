@@ -45,6 +45,6 @@
     "@deep-foundation/deeplinks": "~0.0.294"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "npm run prettier:write"
   }
 }
