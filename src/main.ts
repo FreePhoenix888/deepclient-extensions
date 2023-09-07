@@ -1,4 +1,8 @@
 export {
+  MinilinksDecorator,
+  createMinilinksDecorator,
+} from "./minilinks-decorator/create-minilinks-decorator.js";
+export {
   PackageInstallerDecorator,
   createPackageInstallerDecorator,
 } from "./package-installer-decorator/create-package-installer-decorator.js";
