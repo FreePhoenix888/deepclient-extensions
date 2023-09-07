@@ -15,21 +15,21 @@ We welcome contributions to our project! To ensure a smooth process, please foll
 
 ## Committing Changes
 
-We use [Commitizen](https://github.com/commitizen/cz-cli) to ensure that our Git commit messages are well-formatted.
+Use `git commit` without `-m`/`--message` option because `commitizen` will prompt you to fill out any required commit fields at commit time
 
-1. Install Commitizen globally:
+```
+git commit
+```
 
-   ```
-   npm install -g commitizen
-   ```
+Otherwise you can use `npm run commit` or `npx cz` to commit your changes
 
-2. Instead of `git commit`, run:
+```
+npm run commit
+```
 
-   ```
-   npm run commit
-   ```
-
-   This will prompt you to fill in the gaps to generate a meaningful commit message.
+```
+npx cz
+```
 
 ## Pushing Changes
 
